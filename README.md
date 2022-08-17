@@ -1,0 +1,2 @@
+# About
+This repository contains all the backend server code for my Final Year Project, [PWABook](https://github.com/rosssgill/PWABook). This project was built using [Express](https://expressjs.com/) and [Mongoose](https://mongoosejs.com/) for DB access and ODM.
