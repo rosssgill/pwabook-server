@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import webpush from "web-push";
+
 import PostMessage from "../models/postMessage.js";
 import Subscription from "../models/subscription.js";
 
@@ -24,11 +25,10 @@ export const createPost = async (req, res) => {
 
   try {
     await newPost.save();
-
     webpush.setVapidDetails(
       "mailto:rossstephensongill@gmail.com",
-      "BH3ZQxUdEIciu6Kz6Tiq7udXG1LiBMgEELig2eMNQzaJnHbLv8Nd0zbgquA7XP-N6SW8gCXFQWl_9NmK2OP1BRQ", // public key
-      "3YESRcm6ngaRwm2Pbay7GsfNgAmHuMR9FJ4NRAOjWPg" // private key
+      process.env.VAPID_PUBLIC_KEY, // public key
+      process.env.VAPID_PRIVATE_KEY // private key
     );
 
     const query = await Subscription.find().lean();
